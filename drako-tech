@@ -1,0 +1,54 @@
+import React from "react";
+import { FaShieldAlt, FaCogs, FaRocket } from "react-icons/fa";
+
+export default function HomePage() {
+  return (
+    <div className="bg-gray-900 text-white min-h-screen p-6">
+      {/* Header */}
+      <header className="flex justify-between items-center py-4 px-8 border-b border-gray-700">
+        <h1 className="text-3xl font-bold text-blue-400">Drako Tech Solutions</h1>
+        <nav>
+          <ul className="flex space-x-6">
+            <li><a href="#services" className="hover:text-green-400">Servicios</a></li>
+            <li><a href="#about" className="hover:text-green-400">Nosotros</a></li>
+            <li><a href="#contact" className="hover:text-green-400">Contacto</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      {/* Hero Section */}
+      <section className="text-center py-20">
+        <h2 className="text-4xl font-extrabold text-white">Innovación y Seguridad Tecnológica</h2>
+        <p className="text-lg text-gray-400 mt-4">Soluciones avanzadas para proteger y optimizar tu negocio.</p>
+        <button className="mt-6 bg-blue-500 hover:bg-blue-600 px-6 py-3 text-lg rounded-xl">Descubre más</button>
+      </section>
+
+      {/* Services Section */}
+      <section id="services" className="py-16">
+        <h3 className="text-3xl font-bold text-center text-green-400">Nuestros Servicios</h3>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
+          <div className="p-6 text-center border border-gray-700 rounded-lg">
+            <FaShieldAlt className="text-blue-400 text-5xl mx-auto" />
+            <h4 className="text-xl font-semibold mt-4">Ciberseguridad</h4>
+            <p className="text-gray-400 mt-2">Protege tu empresa con tecnología de vanguardia.</p>
+          </div>
+          <div className="p-6 text-center border border-gray-700 rounded-lg">
+            <FaCogs className="text-green-400 text-5xl mx-auto" />
+            <h4 className="text-xl font-semibold mt-4">Desarrollo Tecnológico</h4>
+            <p className="text-gray-400 mt-2">Soluciones personalizadas para potenciar tu negocio.</p>
+          </div>
+          <div className="p-6 text-center border border-gray-700 rounded-lg">
+            <FaRocket className="text-yellow-400 text-5xl mx-auto" />
+            <h4 className="text-xl font-semibold mt-4">Optimización y Escalabilidad</h4>
+            <p className="text-gray-400 mt-2">Impulsa tu empresa con tecnología eficiente.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="py-6 text-center border-t border-gray-700 mt-12">
+        <p className="text-gray-400">&copy; 2025 Drako Tech Solutions. Todos los derechos reservados.</p>
+      </footer>
+    </div>
+  );
+}
