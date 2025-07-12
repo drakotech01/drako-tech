@@ -1,0 +1,64 @@
+<odoo>
+    <data>
+        <record id="view_hr_employee_form_mx" model="ir.ui.view">
+            <field name="name">hr.employee.form.mx</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form" />
+            <field name="arch" type="xml">
+
+                <!-- Hacer campo name solo lectura -->
+                <xpath expr="//field[@name='name']" position="attributes">
+                    <attribute name="readonly">1</attribute>
+                </xpath>
+
+                <!-- Insertar los campos debajo de job_title, con estilos estándar -->
+                <xpath expr="//field[@name='job_title']" position="after">
+                    <group>
+                        <group string="Información del Colaborador" col="2" style="font-size:14px;">
+                            <field name="name_mx" required="1" />
+                            <field name="ap_pat_mx" required="1" />
+                            <field name="ap_mat_mx" />
+                            <field name="full_name_mx" invisible="1" readonly="1" />
+                        </group>
+                        <group string="Vacaciones según LFT" col="2" style="font-size:14px;">
+                            <field name="fecha_ingreso" class="oe_inline" readonly="1" />
+                            <field name="antiguedad_mx" class="oe_inline" readonly="1" />
+                            <field name="dias_vacaciones_mx" class="oe_inline" readonly="1" />
+                        </group>
+                    </group>
+                </xpath>
+
+                <!-- Insertar el campo de direccion privada debajo del campo de Private contactac -->
+                <xpath expr="//field[@name='private_street']" position="attributes">
+                    <attribute name="readonly">1</attribute>
+                    <attribute name="placeholder" >Direccion Principal</attribute>
+                </xpath>
+                <xpath expr="//page[@name='personal_information']" position="after">
+                    <group>
+                        <field name="private_street" position="remplace">
+                            <field name="address_mx" readonly="1" class="o_address_street" />
+                        </field>                                                                   
+                    </group>
+                </xpath>
+                <xpath expr="//field[@name='private_street2']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='private_street']" position="after">                    
+                    <field name="st_name_mx" placeholder="Calle ..." class="o_address_street"/>
+                    <field name="st_num_mx" placeholder="Numero Exterior..." class="o_address_city"/>
+                    <field name="st_num_int_mx" placeholder="Numero Interior..." class="o_address_city"/>
+                    <field name="private_street2" invisible="1" readonly="1" />
+                    <field name="st_colony_mx" placeholder="Colonia..." class="o_address_city" />                     
+                    <field name="address_mx" invisible="1" readonly="1" />
+                </xpath>
+                <xpath expr="//field[@name='certificate']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='certificate']" position="after">
+                    <field name="level_edu_mx" />
+                    <field name="lvl_edu_mx" />
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
