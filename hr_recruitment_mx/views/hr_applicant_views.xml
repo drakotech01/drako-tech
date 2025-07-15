@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_hr_applicant_form_inherit_mx" model="ir.ui.view">
+        <field name="name">hr.applicant.form.mx</field>
+        <field name="model">hr.applicant</field>
+        <field name="inherit_id" ref="hr_recruitment.hr_applicant_view_form"/>
+        <field name="arch" type="xml">
+
+            <!-- Reemplazar el campo candidate_id con full_name_mx -->
+            <xpath expr="//div[@class='oe_title pe-0']/h1/field[@name='candidate_id']" position="replace">
+                <field name="full_name_mx" readonly="1"/>
+            </xpath>
+
+            <!-- Hacer el statusbar de etapas solo lectura -->
+            <xpath expr="//field[@name='stage_id']" position="attributes">
+                <attribute name="readonly">1</attribute>
+            </xpath>
+
+            <!-- Pestaña para mostrar historial de etapas -->
+            <xpath expr="//notebook" position="inside">
+                <page string="Historial de etapas">
+                    <field name="stage_history_ids">
+                        <tree>
+                            <field name="stage_id"/>
+                            <field name="change_date"/>
+                            <field name="days_in_stage"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+
+            <!-- Agregar botones personalizados en el header -->
+            <xpath expr="//header" position="inside">
+                <button name="action_advance_stage"
+                        type="object"
+                        string="Avanzar"
+                        class="btn btn-primary"
+                        groups="hr.group_hr_user"/>
+                
+                <button name="action_reject_applicant"
+                        type="object"
+                        string="Rechazar"
+                        class="btn btn-danger"
+                        groups="hr.group_hr_user"/>
+            </xpath>
+
+            <!-- Hacer el statusbar de etapas solo lectura -->
+            <xpath expr="//field[@name='stage_id']" position="attributes">
+                <attribute name="readonly">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='candidate_id']" position="after">
+                <group string="Datos Personales MX" style="font-size:14px;">
+                    <field name="name_mx"/>
+                    <field name="ap_pat_mx"/>
+                    <field name="ap_mat_mx"/>
+                    <field name="full_name_mx" readonly="1" />
+                </group>
+                <group string="Dirección" style="font-size:14px;">
+                    <field name="st_name_mx"/>
+                    <field name="st_num_mx"/>
+                    <field name="st_num_int_mx"/>
+                </group>                
+            </xpath>
+            <header position="inside">
+                <button name="action_create_employee_custom"
+                        string="Crear Empleado Personalizado"
+                        type="object"
+                        class="btn-primary"/>
+            </header>
+        </field>
+    </record>
+</odoo>
